@@ -1,0 +1,48 @@
+<main class="main">
+  <div class="inner">
+    <div class="animal__wrapper">
+      <p class="animal__hedding">
+        <%= @animal.name %>
+        <%= "ちゃん" %>
+      </p>
+      <%= link_to "by #{@animal.user.user}", root_path, class: :animal__user %>
+      <% if current_user == @animal.user%>
+        <div class="animal__manage">
+          <%= link_to "編集する", edit_animal_path(@animal), class: :animal__btn %>
+          <%= link_to "削除する", animal_path(@animal), method: :delete, class: :animal__btn %>
+        </div>
+      <% end %>
+      <div class="animal__image">
+        <%= image_tag @animal.image %>
+      </div>
+      <div class="animal__body">
+        <div class="animal__detail">
+          <p class="detail__title">種類</p>
+          <p class="detail__message">
+            <%= @animal.anm_type %>
+          </p>
+        </div>
+        <div class="animal__detail">
+          <p class="detail__title">性別</p>
+          <p class="detail__message">
+            <%= @animal.gender %>
+          </p>
+        </div>
+        <div class="animal__detail">
+          <p class="detail__title">チャームポイント</p>
+          <p class="detail__message">
+            <%= @animal.catch_copy %>
+          </p>
+        </div>
+        <div class="animal__detail">
+          <p class="detail__title">お住まい</p>
+          <p class="detail__message">
+            <%= @user.prefecture %>
+          </p>
+        </div>
+        
+      </div>
+      
+    </div>
+  </div>
+</main>

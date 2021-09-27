@@ -1,0 +1,30 @@
+<%= form_with model: animal, local: true do |f|%>
+  <div class="field">
+    <%= f.label :name, "ペットのお名前" %><br />
+    <%= f.text_field :name, id:"animal_name" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :anm_type, "種類" %><br />
+    <%= f.text_field :anm_type, class: :form__text, id:"animal_anm_type" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :gender, "性別" %><br />
+    <%= f.text_field :gender, class: :form__text, id:"animal_gender" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :catch_copy, "チャームポイント" %><br />
+    <%= f.text_area :catch_copy, class: :form__text, id:"animal_catch_copy" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :image, "ペットの画像" %><br />
+    <%= f.file_field :image, id:"animal_image" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "保存する", class: :form__btn  %>
+  </div>
+<% end %>

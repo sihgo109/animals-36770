@@ -1,24 +1,53 @@
 # README
+# テーブル設計
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## users_table
 
-Things you may want to cover:
+| Column             | Type   | Options     |
+| ------------------ | ------ | ----------- |
+| email              | string | null: false |
+| password           | string | null: false |
+| user               | string | null: false |
+| profile            | string | null: false |
+| prefecture         | string | null: false |
 
-* Ruby version
+### Association
 
-* System dependencies
+- has_many :animals_users
+- has_many :animals, through: :animals_users
+- has_many :comments
 
-* Configuration
 
-* Database creation
 
-* Database initialization
+## animals_table
 
-* How to run the test suite
+| Column             | Type         | Options     |
+| ------------------ | ------------ | ----------- |
+| name               | string       | null: false |
+| type               | string       | null: false |
+| catch_copy         | text         | null: false |
+| user               | reference    | null: false |
+| gender             | string       | null: false |
 
-* Services (job queues, cache servers, search engines, etc.)
 
-* Deployment instructions
+### Association
 
-* ...
+- has_many :animals_users
+- has_many :users, through: :animals_users
+- has_many :comments
+
+
+
+## comments table
+
+| Column    | Type       | Options     |
+| --------- | ---------- | ------------|
+| text      | text       | null: false |
+| animal    | references | null: false |
+| user      | references | null: false |
+
+
+### Association
+
+- belongs_to :animal
+- belongs_to :user

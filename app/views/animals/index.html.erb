@@ -1,0 +1,17 @@
+
+<main class="main">
+  <div class="inner">
+    <% if user_signed_in? %>
+      <div class="greeting">
+        <%="こんにちは、" %>
+        <%= link_to "#{current_user.user}", root_path(current_user), class: :greeting__link%>
+        <%="さん" %>
+      </div>
+    <% end %>
+    <div class="card__wrapper">
+      <% @animals.each do |animal| %>
+       <%= render partial: "animal", locals: { animal: animal } %>
+      <% end %>
+    </div>
+  </div>
+</main>
